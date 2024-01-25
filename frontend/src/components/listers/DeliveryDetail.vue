@@ -1,10 +1,13 @@
 <template>
     <v-card outlined>
         <v-card-title>
-            Order # {{item._links.self.href.split("/")[item._links.self.href.split("/").length - 1]}}
+            Delivery # {{item._links.self.href.split("/")[item._links.self.href.split("/").length - 1]}}
         </v-card-title>
 
         <v-card-text>
+            <div>
+                <Number label="OrderId" v-model="item.orderId" :editMode="editMode" @change="change" />
+            </div>
             <div>
                 <Number label="ProductId" v-model="item.productId" :editMode="editMode" @change="change" />
             </div>
@@ -12,10 +15,7 @@
                 <Number label="Qty" v-model="item.qty" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="CustomerId" v-model="item.customerId" :editMode="editMode" @change="change" />
-            </div>
-            <div>
-                <Number label="Amount" v-model="item.amount" :editMode="editMode" @change="change" />
+                <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 
@@ -63,7 +63,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'OrderOrderDetail',
+        name: 'DeliveryDetail',
         components:{},
         props: {
         },
@@ -74,7 +74,7 @@
         async created() {
             var me = this;
             var params = this.$route.params;
-            var temp = await axios.get(axios.fixUrl('/orders/' + params.id))
+            var temp = await axios.get(axios.fixUrl('/deliveries/' + params.id))
             if(temp.data) {
                 me.item = temp.data
             }

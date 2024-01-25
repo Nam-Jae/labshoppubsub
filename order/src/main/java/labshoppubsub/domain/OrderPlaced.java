@@ -9,19 +9,18 @@ import lombok.*;
 //<<< DDD / Domain Event
 @Data
 @ToString
-public class DeliveryStarted extends AbstractEvent {
+public class OrderPlaced extends AbstractEvent {
 
     private Long id;
-    private Long orderId;
     private Long productId;
     private Integer qty;
-    private String status;
+    private Long customerId;
 
-    public DeliveryStarted(Delivery aggregate) {
+    public OrderPlaced(Order aggregate) {
         super(aggregate);
     }
 
-    public DeliveryStarted() {
+    public OrderPlaced() {
         super();
     }
 }

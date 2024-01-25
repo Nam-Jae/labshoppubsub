@@ -8,8 +8,6 @@ Vue.use(Router);
 import OrderOrderManager from "./components/listers/OrderOrderCards"
 import OrderOrderDetail from "./components/listers/OrderOrderDetail"
 
-import InventoryInventoryManager from "./components/listers/InventoryInventoryCards"
-import InventoryInventoryDetail from "./components/listers/InventoryInventoryDetail"
 
 
 
@@ -28,16 +26,6 @@ export default new Router({
                 component: OrderOrderDetail
             },
 
-            {
-                path: '/inventories/inventories',
-                name: 'InventoryInventoryManager',
-                component: InventoryInventoryManager
-            },
-            {
-                path: '/inventories/inventories/:id',
-                name: 'InventoryInventoryDetail',
-                component: InventoryInventoryDetail
-            },
 
 
 

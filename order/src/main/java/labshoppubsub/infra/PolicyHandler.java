@@ -17,23 +17,10 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class PolicyHandler {
 
+    @Autowired
+    OrderRepository orderRepository;
+
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='OrderPlaced'"
-    )
-    public void wheneverOrderPlaced_DecreaseStock(
-        @Payload OrderPlaced orderPlaced
-    ) {
-        OrderPlaced event = orderPlaced;
-        System.out.println(
-            "\n\n##### listener DecreaseStock : " + orderPlaced + "\n\n"
-        );
-
-        // Sample Logic //
-        Inventory.decreaseStock(event);
-    }
 }
 //>>> Clean Arch / Inbound Adaptor

@@ -17,10 +17,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long stock;
-
-    @PostPersist
-    public void onPostPersist() {}
+    private Integer stock;
 
     public static InventoryRepository repository() {
         InventoryRepository inventoryRepository = InventoryApplication.applicationContext.getBean(

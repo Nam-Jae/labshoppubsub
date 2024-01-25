@@ -7,5 +7,5 @@ import lombok.Data;
 public class Inventory {
 
     private Long id;
-    private Long stock;
+    private Integer stock;
 }
